@@ -7,6 +7,16 @@ instead of `npm install --save setimmediate`, use this:
     npm install --save @plotdb/setimmediate
 
 
+
+## Why
+
+Original setImmediate.js checks `global` against `event.source` (line 112, setImmediate.js). However, `@plotdb/rescope` replace global with an proxied object - which makes this comparison fail, and thus, callback functions passed to `setImmediate` will never be run.
+
+Generally speaking, this is a limitation of `@plotdb/rescope` - Proxy object should not be the same with the proxied object, and we probably should not mess up with the event emitter about event's source.
+
+Since `setImmediate.js` checks the existence of `setImmediate` before initialization, we can simply provide an alternative version such as this `@plotdb/setimmediate` to workaround this issue for now - although this may increase the required JS file size by about 1.6K.
+
+
 ----
 
 # setImmediate.js
