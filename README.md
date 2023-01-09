@@ -1,3 +1,14 @@
+# @plotdb/setimmediate
+
+fork of `setImmediate.js` by `YuzuJS`, patching for rescope environment.
+
+instead of `npm install --save setimmediate`, use this:
+
+    npm install --save @plotdb/setimmediate
+
+
+----
+
 # setImmediate.js
 **A YuzuJS production**
 
